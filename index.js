@@ -1,25 +1,22 @@
-import express from 'express';
-import sequelize from './db/index.js';
-import orderRouter from './routers/orderRouter.js'; // Import orders router
+
+import express from "express";
+import cors from "cors";
+import userRoutes from "./routes/userRoutes.js";
+import orderRouter from './routes/orderRouter.js'; // Import orders router
 
 const app = express();
 
-// Middleware to parse JSON in request bodies
-app.use(express.json());
+// Middleware
+app.use(express.json()); // To parse JSON bodies
+app.use(cors()); // Enable CORS
 
-// Define root route
-app.get('/', (req, res) => {
-  res.send('Welcome to the eCommerce API!');
-});
-
-// Connect the `/orders` route
+// Use the user routes
+app.use("/users", userRoutes);
 app.use('/orders', orderRouter);
 
-sequelize.sync().then(() => {
-  console.log('Database synced');
-  app.listen(3000, () => {
-    console.log('Server running on http://localhost:3000');
-  });
-}).catch((err) => {
-  console.error('Unable to connect to the database:', err);
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+
 });
