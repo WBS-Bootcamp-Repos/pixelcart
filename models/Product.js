@@ -27,7 +27,11 @@ const Product = sequelize.define(
     {
         tableName: "products",
         timestamps: true, // Enable default createdAt and updatedAt columns
-    }
+    },
 );
 
+Product.sync({
+    logging: false,
+    alter: true,
+})
 export default Product;
