@@ -7,7 +7,7 @@ import {
   deleteOrder,
 } from '../controllers/orderController.js';
 import { createOrderSchema, updateOrderSchema } from '../schemas/orderSchemas.js';
-import validateSchema from '../middlewares/validateSchema.js';
+import validateSchema from '../middleware/validateSchema.js';
 
 const router = Router();
 
