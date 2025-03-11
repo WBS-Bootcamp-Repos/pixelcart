@@ -1,4 +1,5 @@
 import express from "express";
+import validateUser from "../middleware/validateRequest.js";
 import {
   getUsers,
   createUser,
@@ -13,7 +14,7 @@ const router = express.Router();
 router.get("/", getUsers);
 
 // POST /users - Create a new user
-router.post("/", createUser);
+router.post("/", validateUser, createUser);
 
 // GET /users/:id - Get a user by ID
 router.get("/:id", getUserById);
