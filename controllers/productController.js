@@ -14,24 +14,23 @@ export const getProducts = async (req, res) => {
 
 // POST /products: Create a new product
 export const createProduct = async (req, res) => {
-    const { name, description, usage } = req.body;
+    const { name, description, price } = req.body;
 
-    if (!name || !description || !usage) {
+    if (!name || !description || !price) {
         return res.status(400).json({
-            message: "Name, description and usage are required."
+            message: "Name, description and price are required."
         })
     }
 
     try {
-        const product = await Product.create({ name, description, usage })
+        const product = await Product.create({ name, description, price })
         return res.status(201).json(product)
     } catch (error) {
         // If it's a Sequelize validation error, respond with the details
         if (error.name === "SequelizeValidationError") {
-            console.error("Validation errors:", error.errors);
             return res.status(400).json({
                 message: "Validation error",
-                errors: error.errors.map((err) => err.message),
+                errors: error.errors.map((error) => error.message),
             });
         }
 
