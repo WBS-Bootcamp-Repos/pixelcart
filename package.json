@@ -1,0 +1,19 @@
+{
+  "name": "ecommerce-api",
+  "version": "1.0.0",
+  "description": "This project is a comprehensive backend application designed to manage an eCommerce platform. It facilitates operations such as listing products, managing categories, and processing user orders.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "pg": "^8.13.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.6"
+  }
+}
