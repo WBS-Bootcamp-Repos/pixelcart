@@ -1,6 +1,7 @@
 {
-  "name": "pixelcart",
+ "name": "ecommerce-api",
   "version": "1.0.0",
+  "description": "This project is a comprehensive backend application designed to manage an eCommerce platform. It facilitates operations such as listing products, managing categories, and processing user orders.",
   "main": "index.js",
   "type": "module",
   "scripts": {

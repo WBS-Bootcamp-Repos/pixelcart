@@ -1,7 +1,9 @@
+
 import express from "express";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
+import orderRouter from './routes/orderRouter.js'; // Import orders router
 
 const app = express();
 
@@ -11,6 +13,7 @@ app.use(cors()); // Enable CORS
 
 // Use the user routes
 app.use("/users", userRoutes);
+app.use('/orders', orderRouter);
 
 // Error handling middleware (should be last)
 app.use(errorHandler);
@@ -19,4 +22,5 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+
 });
