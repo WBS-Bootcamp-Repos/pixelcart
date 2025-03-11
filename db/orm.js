@@ -14,6 +14,7 @@ if (!connectionString) {
 // Initialize Sequelize with the connection string
 const sequelize = new Sequelize(connectionString, {
   dialect: "postgres",
+  logging: false,
   dialectOptions: {
     ssl: {
       require: true,

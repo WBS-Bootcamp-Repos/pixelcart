@@ -2,6 +2,8 @@
 import express from "express";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
+import productRoutes from "./routes/productRoutes.js"
+import errorHandler from "./middleware/errorHandler.js";
 import orderRouter from './routes/orderRouter.js'; // Import orders router
 
 const app = express();
@@ -10,9 +12,13 @@ const app = express();
 app.use(express.json()); // To parse JSON bodies
 app.use(cors()); // Enable CORS
 
-// Use the user routes
+// Use the User, Order and Products routes
 app.use("/users", userRoutes);
 app.use('/orders', orderRouter);
+app.use("/products", productRoutes);
+
+// Error handling middleware (should be last)
+app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 
