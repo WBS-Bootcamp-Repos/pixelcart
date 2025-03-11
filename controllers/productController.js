@@ -28,6 +28,7 @@ export const createProduct = async (req, res) => {
     } catch (error) {
         // If it's a Sequelize validation error, respond with the details
         if (error.name === "SequelizeValidationError") {
+            console.error("Validation errors:", error.errors);
             return res.status(400).json({
                 message: "Validation error",
                 errors: error.errors.map((err) => err.message),

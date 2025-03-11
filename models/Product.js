@@ -11,17 +11,19 @@ const Product = sequelize.define(
             autoIncrement: true,
         },
         name: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                notEmpty: true,
+            },
         },
         description: {
-            type: DataTypes.STRING(500),
-            allowNull: false,
-            unique: true,
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         usage: {
-            type: DataTypes.TEXT,
-            allowNull: false,
+            type: DataTypes.STRING,
+            allowNull: true,
         },
     },
     {
