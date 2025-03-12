@@ -1,7 +1,7 @@
 
 import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "../db/orm.js";
-// import Category from './Category.js';
+import Category from "./Category.js";
 
 const Product = sequelize.define(
     "Product",
@@ -23,15 +23,15 @@ const Product = sequelize.define(
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        // categoryId: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     references: {
-        //         model: Category,
-        //         key: 'id',
-        //     },
-        //     onDelete: 'CASCADE', // If category is deleted, its products should be deleted
-        // }
+        categoryId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: Category,
+                key: 'id',
+            },
+            onDelete: 'CASCADE', // If category is deleted, its products should be deleted
+        }
     },
     {
         tableName: "products",
@@ -41,6 +41,6 @@ const Product = sequelize.define(
 
 Product.sync({
     logging: false,
-    alter: true,
+    alter: false,
 })
 export default Product;
