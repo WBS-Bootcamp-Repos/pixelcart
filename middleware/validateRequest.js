@@ -1,4 +1,4 @@
-import userSchema from "../schemas/userschemas.js";
+import userSchema from "../schemas/userSchemas.js";
 
 const validateUser = (req, res, next) => {
   const { error } = userSchema.validate(req.body);
