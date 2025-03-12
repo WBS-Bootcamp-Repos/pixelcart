@@ -1,5 +1,5 @@
 import express from "express";
-import validateUser from "../middleware/validateRequest.js";
+import { validateUser } from "../middleware/validateRequest.js";
 import {
   getUsers,
   createUser,
