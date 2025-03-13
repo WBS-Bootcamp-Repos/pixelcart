@@ -3,7 +3,9 @@ import User from "../models/User.js";
 // GET /users: Fetch all users
 export const getUsers = async (req, res) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: { exclude: ["password"] }, // Exclude password field
+    });
     res.status(200).json(users); // Return all users
   } catch (error) {
     console.error(error);
@@ -50,7 +52,9 @@ export const getUserById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id, {
+      attributes: { exclude: ["password"] }, // Exclude password field
+    });
 
     if (!user) {
       return res.status(404).json({ message: "User not found." });
